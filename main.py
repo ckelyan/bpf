@@ -28,9 +28,9 @@ def intToStrBinary(n):
     return format(n, f'#0{SEP+2}b')[2:]
 
 # converts binary strings to printable characters
-# example: '0101' -> '  ██  ██'
+# example: '0101' -> '  ██  ██ 5' (5 is the decimal representation of the line)
 def intToPattern(n, charOn='██', charOff='  '):
-    return ''.join(charOn if c == '1' else charOff for c in intToStrBinary(n))
+    return f"{''.join(charOn if c == '1' else charOff for c in intToStrBinary(n))} {str(n)}"
 
 # converts an array of integers to a string of binary digits
 # example: [7, 12, 15, 5] -> '0111\n1100\n1111\n0101'
@@ -60,6 +60,7 @@ for i in range(len(lines)):
         print(colored(decimalArrayToStr(lines[i:i+PATTERN_LEN], intToPattern), 'cyan'))
         # prints 2 lines after the found pattern in white
         print(decimalArrayToStr(lines[i:i+2], intToPattern))
+        # print(lines[i-2:i])
         print()
     
 print()
