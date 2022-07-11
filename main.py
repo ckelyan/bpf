@@ -19,6 +19,8 @@ TARGET_PATTERN_INT = np.array([
 ])
 # length of the pattern
 PATTERN_LEN = len(TARGET_PATTERN_INT)
+# name of converted digits file
+FILENAME = f'converted_{SEP}.txt'
 
 # turns decimal integers into binary strings of length SEP
 # example: 7 -> '0111'
@@ -39,7 +41,7 @@ print('Target pattern:')
 print(decimalArrayToStr(TARGET_PATTERN_INT, intToPattern))
 
 # read the file which contains the digits of pi stripped
-with open(f'converted_{SEP}.txt', 'r') as f:
+with open(FILENAME, 'r') as f:
     lines = f.readlines()
     # turn everything into integers
     lines = [int(line.strip()) for line in lines]
