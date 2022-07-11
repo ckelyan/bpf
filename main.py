@@ -46,20 +46,19 @@ with open(FILENAME, 'r') as f:
     # turn everything into integers
     lines = [int(line.strip()) for line in lines]
 
-# 
 for i in range(len(lines)):
-    print(f'Line {i}', end='\r')
+    print(f'Line {i+1}', end='\r')
     
     # compare arrays
     # there might be a better way to do this but this works and is already fast enough imo
     if all(lines[i+r] == TARGET_PATTERN_INT[r] for r in range(PATTERN_LEN)):
-        print(f'Found pattern at line {i}')
+        print(f'Found pattern at line {i+1}')
         # prints 2 lines before the found pattern in white
         print(decimalArrayToStr(lines[i-2:i], intToPattern))
         # prints the pattern in cyan
         print(colored(decimalArrayToStr(lines[i:i+PATTERN_LEN], intToPattern), 'cyan'))
         # prints 2 lines after the found pattern in white
-        print(decimalArrayToStr(lines[i:i+2], intToPattern))
+        print(decimalArrayToStr(lines[i+PATTERN_LEN:i+PATTERN_LEN+2], intToPattern))
         # print(lines[i-2:i])
         print()
     
